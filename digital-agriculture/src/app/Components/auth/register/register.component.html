@@ -1,0 +1,114 @@
+<div class="min-h-screen bg-gradient-to-br from-emerald-50 via-lime-50 to-amber-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 flex items-center justify-center p-6 relative overflow-hidden">
+
+  <div class="pointer-events-none absolute inset-0 opacity-20 dark:opacity-10" aria-hidden="true">
+    <svg class="absolute -top-24 -left-24 w-[42rem] h-[42rem]" viewBox="0 0 600 600" fill="none">
+      <defs>
+        <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#65A30D"/>
+          <stop offset="100%" stop-color="#A3E635"/>
+        </linearGradient>
+      </defs>
+      <path d="M300,60 C420,120 520,220 540,330 C560,440 500,520 390,540 C280,560 140,520 90,420 C40,320 90,180 190,110 C230,80 270,60 300,60Z" fill="url(#g1)" />
+    </svg>
+    <svg class="absolute -bottom-24 -right-24 w-[40rem] h-[40rem]" viewBox="0 0 600 600" fill="none">
+      <defs>
+        <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#F59E0B"/>
+        <stop offset="100%" stop-color="#84CC16"/>
+      </linearGradient>
+      </defs>
+      <circle cx="300" cy="300" r="260" fill="url(#g2)" />
+    </svg>
+  </div>
+
+  <div class="relative w-full max-w-md">
+    <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur rounded-3xl shadow-xl p-8">
+      <div class="mb-6">
+        <h1 class="text-xl font-semibold text-gray-900 dark:text-white">Criar conta</h1>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Cadastre-se para gerenciar seus talhões.</p>
+      </div>
+
+      <form [formGroup]="form" (ngSubmit)="clickRegister()" novalidate class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Nome completo</label>
+          <input
+            type="text"
+            formControlName="name"
+            placeholder="Ex.: Ana Produtora"
+            class="w-full rounded-xl border bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 px-4
+              py-2.5 focus:outline-none focus:ring-2"
+            [ngClass]="(form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched))
+              ? 'border-red-500 focus:ring-red-600'
+              : 'border-gray-300 dark:border-neutral-700 focus:ring-emerald-600 dark:focus:ring-lime-400'"
+          />
+          <div class="mt-1 h-5 text-sm">
+            @if (form.get('name')?.errors && (form.get('name')?.dirty || form.get('name')?.touched)) {
+              <span class="text-red-600">
+                @if (form.get('name')?.errors?.['required']) { Informe seu nome. }
+              </span>
+            }
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">E-mail</label>
+          <input
+            type="email"
+            formControlName="email"
+            placeholder="produtor@fazenda.com"
+            class="w-full rounded-xl border bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 px-4 py-2.5
+              focus:outline-none focus:ring-2"
+            [ngClass]="(form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched))
+              ? 'border-red-500 focus:ring-red-600'
+              : 'border-gray-300 dark:border-neutral-700 focus:ring-emerald-600 dark:focus:ring-lime-400'"
+          />
+          <div class="mt-1 h-5 text-sm">
+            @if (form.get('email')?.errors && (form.get('email')?.dirty || form.get('email')?.touched)) {
+              <span class="text-red-600">
+                @if (form.get('email')?.errors?.['required']) { Informe seu e-mail. }
+                @else if (form.get('email')?.errors?.['email']) { E-mail inválido. }
+              </span>
+            }
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Senha</label>
+          <input
+            type="password"
+            formControlName="password"
+            placeholder="••••••••"
+            class="w-full rounded-xl border bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 px-4 py-2.5
+             focus:outline-none focus:ring-2"
+            [ngClass]="(form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched))
+              ? 'border-red-500 focus:ring-red-600'
+              : 'border-gray-300 dark:border-neutral-700 focus:ring-emerald-600 dark:focus:ring-lime-400'"
+          />
+          <div class="mt-1 h-5 text-sm">
+            @if (form.get('password')?.errors && (form.get('password')?.dirty || form.get('password')?.touched)) {
+              <span class="text-red-600">
+                @if (form.get('password')?.errors?.['required']) { Informe a senha. }
+                @else if (form.get('password')?.errors?.['minlength']) { Mínimo de 6 caracteres. }
+              </span>
+            }
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          [disabled]="form.invalid"
+          class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-700 text-white px-4 py-2.5 font-medium
+            shadow hover:shadow-md hover:bg-emerald-800 transition disabled:opacity-60 disabled:cursor-not-allowed">
+          Cadastrar
+        </button>
+      </form>
+
+      <div class="my-6 border-t border-white/10"></div>
+
+      <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+        Já tem conta?
+        <a routerLink="/login" class="font-medium text-emerald-700 dark:text-lime-400 hover:underline">Entrar</a>
+      </p>
+    </div>
+  </div>
+</div>
