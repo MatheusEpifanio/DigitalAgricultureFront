@@ -1,5 +1,5 @@
 <div class="min-h-screen bg-gradient-to-br from-emerald-50 via-lime-50 to-amber-50
-            dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 flex items-center
+            dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 flex
             justify-center p-6 relative overflow-hidden">
 
   <div class="pointer-events-none absolute -left-56 -top-40 w-[38rem] h-[38rem]
@@ -7,8 +7,8 @@
   <div class="pointer-events-none absolute -right-56 bottom-[-8rem] w-[46rem] h-[46rem]
               rounded-full bg-emerald-900/20 blur-3xl"></div>
 
-  <div class="relative w-full max-w-4xl rounded-2xl bg-white/70 dark:bg-slate-900/60
-              backdrop-blur-xl ring-1 ring-white/10 shadow-2xl p-6 md:p-8">
+  <div class="relative w-full max-w-10xl rounded-2xl bg-white/70 dark:bg-slate-900/60
+              backdrop-blur-xl ring-1 ring-white/10 shadow-2xl p-6 md:p-8 h-[55vh]">
 
     <div class="flex items-center justify-between mb-6">
       <div class="flex items-center gap-3">
@@ -119,8 +119,7 @@
               : 'border-gray-300 dark:border-neutral-700 focus:ring-emerald-600 dark:focus:ring-lime-400'"/>
           @if (form.get('latitude')?.hasError('required')) {
             <p class="mt-1 text-sm text-red-600">Informe a latitude.</p>
-          }
-          @else if (form.get('latitude')?.hasError('min') || form.get('latitude')?.hasError('max')) {
+          } @else if (form.get('latitude')?.hasError('min') || form.get('latitude')?.hasError('max')) {
             <p class="mt-1 text-sm text-red-600">Latitude deve estar entre -90 e 90.</p>
           }
         </div>
@@ -146,14 +145,13 @@
               : 'border-gray-300 dark:border-neutral-700 focus:ring-emerald-600 dark:focus:ring-lime-400'"/>
           @if (form.get('longitude')?.hasError('required')) {
             <p class="mt-1 text-sm text-red-600">Informe a longitude.</p>
-          }
-          @else if (form.get('longitude')?.hasError('min') || form.get('longitude')?.hasError('max')) {
+          } @else if (form.get('longitude')?.hasError('min') || form.get('longitude')?.hasError('max')) {
             <p class="mt-1 text-sm text-red-600">Longitude deve estar entre -180 e 180.</p>
           }
         </div>
       </div>
 
-      <div class="flex items-center justify-end gap-3">
+      <div class="flex items-center self-end justify-end gap-3">
         <button
           type="button"
           routerLink="/dashboard"

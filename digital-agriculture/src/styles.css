@@ -1,16 +1,20 @@
 @import "tailwindcss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .mat-mdc-paginator,
 .mat-mdc-paginator .mat-mdc-paginator-container {
   background-color: rgba(15, 23, 42, 0.8) !important;
-
   color: #e5e7eb !important;
-
   border: 1px solid rgba(148, 163, 184, 0.4) !important;
-
   border-radius: 0.75rem !important;
 }
 
@@ -22,18 +26,31 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .mat-mdc-paginator .mat-mdc-icon-button {
-  border: 1px solid rgba(100, 116, 139, 0.5) !important;
-
-  border-radius: 0.5rem !important;
-
   width: 2.25rem !important;
   height: 2.25rem !important;
-  color: #e2e8f0 !important;
+  border: 1px solid rgba(100, 116, 139, 0.5) !important;
+  border-radius: 0.5rem !important;
   background: transparent !important;
+  color: #e5e7eb !important;
 }
 
 .mat-mdc-paginator .mat-mdc-icon-button:hover {
   background: rgba(148, 163, 184, 0.1) !important;
+}
+
+.mat-mdc-paginator {
+  --mdc-icon-button-icon-color: #e5e7eb;
+  --mdc-icon-button-disabled-icon-color: #94a3b8;
+}
+
+.mat-mdc-paginator .mat-mdc-icon-button.mat-mdc-button-disabled,
+.mat-mdc-paginator .mat-mdc-icon-button.mat-mdc-button-disabled-interactive {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+}
+
+.mat-mdc-paginator .mat-mdc-paginator-icon {
+  fill: currentColor !important;
 }
 
 .mat-mdc-paginator .mat-mdc-form-field {
@@ -49,26 +66,97 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   color: #e5e7eb !important;
 }
 
-.mat-mdc-paginator {
-  --mdc-icon-button-icon-color: #e5e7eb;
-  --mdc-icon-button-disabled-icon-color: #94a3b8;
+.mat-mdc-form-field.mat-mdc-form-field-type-mat-select {
+  --mdc-outlined-text-field-container-shape: 0.75rem;
+  --mdc-outlined-text-field-outline-color: rgba(148, 163, 184, .35);
+  --mdc-outlined-text-field-hover-outline-color: rgba(148, 163, 184, .55);
+  --mdc-outlined-text-field-focus-outline-color: #10b981;
+  --mdc-outlined-text-field-disabled-outline-color: rgba(148, 163, 184, .25);
+  --mdc-outlined-text-field-label-text-color: rgba(203, 213, 225, .8);
+  --mdc-outlined-text-field-input-text-color: #e5e7eb;
+  --mdc-outlined-text-field-caret-color: #22c55e;
+  background-color: rgba(30, 41, 59, .55);
+  backdrop-filter: blur(12px);
+  border-radius: 0.75rem;
 }
 
-.mat-mdc-paginator .mat-mdc-icon-button {
+.mat-mdc-select-trigger,
+.mat-mdc-select-value {
   color: #e5e7eb !important;
+  font-weight: 500;
 }
 
-.mat-mdc-paginator .mat-mdc-icon-button.mat-mdc-button-disabled,
-.mat-mdc-paginator .mat-mdc-icon-button.mat-mdc-button-disabled-interactive {
-  color: #94a3b8 !important;
-  opacity: 1 !important;
-
-}
-
-.mat-mdc-paginator .mat-mdc-paginator-icon {
-  fill: currentColor !important;
-}
-
+.mat-mdc-select-arrow,
 .mat-mdc-paginator .mat-mdc-select-arrow {
   color: #e5e7eb !important;
+}
+
+.mat-mdc-form-field-subscript-wrapper .mat-mdc-form-field-error {
+  color: #fca5a5 !important;
+}
+
+.cdk-overlay-container,
+.cdk-overlay-pane,
+.cdk-overlay-connected-position-bounding-box {
+  z-index: 2147483647 !important;
+}
+
+.cdk-overlay-pane .mat-mdc-select-panel {
+  opacity: 1 !important;
+  background: rgba(15, 23, 42, 0.98) !important;
+  color: #e5e7eb !important;
+  border: 1px solid rgba(148, 163, 184, .35);
+  border-radius: 0.75rem !important;
+  backdrop-filter: none !important;
+  box-shadow: 0 10px 40px rgba(2, 6, 23, .5);
+  padding-block: 6px;
+}
+
+.mat-mdc-option {
+  --mdc-list-list-item-label-text-color: #e5e7eb;
+  padding-inline: 14px !important;
+  border-radius: 0.5rem;
+  margin: 2px 6px;
+}
+
+.cdk-overlay-pane .mat-mdc-option .mdc-list-item__primary-text {
+  color: #e5e7eb !important;
+}
+
+.cdk-overlay-pane .mat-mdc-option.mdc-list-item--selected .mdc-list-item__primary-text {
+  color: #a7f3d0 !important;
+}
+
+.cdk-overlay-pane .mat-mdc-option:hover,
+.cdk-overlay-pane .mat-mdc-option.mdc-list-item--activated {
+  background: rgba(148, 163, 184, .10) !important;
+}
+
+.mat-mdc-option.mdc-list-item--selected {
+  background: rgba(16, 185, 129, .15) !important;
+  --mdc-list-list-item-label-text-color: #a7f3d0;
+}
+
+.mat-mdc-option .mdc-list-item__end {
+  color: #34d399 !important;
+}
+
+.mat-mdc-option.mdc-list-item--disabled {
+  opacity: .5;
+}
+
+.mat-mdc-select-disabled .mat-mdc-select-value {
+  color: rgba(148, 163, 184, .6) !important;
+}
+
+.no-subscript-gap .mat-mdc-form-field-subscript-wrapper {
+  height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.no-subscript-gap.mat-mdc-form-field-invalid .mat-mdc-form-field-subscript-wrapper {
+  height: auto;
+  padding-top: .25rem;
+  margin-top: .25rem;
 }

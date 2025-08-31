@@ -1,9 +1,9 @@
-import { AfterContentInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FieldsService } from '../../fields.service';
-import { catchError, Observable, of, tap } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { DialogSnakBarService } from '../../../shared/dialog-snack-bar.service';
 import { PaginationResponse } from '../../../shared/model/response/PaginationResponse';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginatorIntl, PageEvent } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -31,11 +31,12 @@ export class FieldsDashboardComponent implements OnInit {
   public numberPage = 0;
   public lengthPage = 10;
 
-
   constructor(private fieldsServices: FieldsService, private snackBar: DialogSnakBarService,
-      private router: Router, private activateRoute: ActivatedRoute){}
+      private router: Router, private activateRoute: ActivatedRoute, private paginatorIntl: MatPaginatorIntl){}
 
   ngOnInit(): void {
+    this.paginatorIntl.itemsPerPageLabel = 'Itens por página:';
+    this.paginatorIntl.changes.next();
     this.refresh();
   }
 
@@ -55,13 +56,17 @@ export class FieldsDashboardComponent implements OnInit {
     this.refresh();
   }
 
-  public newField(){
+  public clickNewField(){
     this.router.navigate(['novo'], {relativeTo: this.activateRoute});
   }
 
-  placeholderArray(count: number): number[] {
-    return Array.from({ length: Math.max(0, count) }, (_, i) => i);
+  public clickDetails(fieldId: number){
+    this.router.navigate(['detalhes', fieldId], {relativeTo: this.activateRoute});
   }
 
+  public clickLogout(){
+    localStorage.removeItem('token');
+    this.router.navigate(['login'])
+  }
 
 }

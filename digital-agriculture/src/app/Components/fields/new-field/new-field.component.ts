@@ -29,8 +29,8 @@ export class NewFieldComponent implements OnInit{
       name: ['', [Validators.required, Validators.max(50)]],
       crop: ['', [Validators.required, Validators.max(30)]],
       areaHectares: ['', [Validators.required, Validators.min(1)]],
-      longitude: ['', [Validators.required, Validators.min(-90), Validators.max(90)]],
-      latitude: ['', [Validators.required, Validators.min(-180), Validators.max(180)]]
+      longitude: ['', [Validators.required, Validators.min(-180), Validators.max(180)]],
+      latitude: ['', [Validators.required, Validators.min(-90), Validators.max(90)]]
     });
   }
 
