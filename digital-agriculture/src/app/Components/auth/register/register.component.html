@@ -33,41 +33,42 @@
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Nome completo</label>
           <input
             type="text"
+            name="name"
+            maxlength="50"
             formControlName="name"
             placeholder="Ex.: Ana Produtora"
             class="w-full rounded-xl border bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 px-4
               py-2.5 focus:outline-none focus:ring-2"
-            [ngClass]="(form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched))
+            [ngClass]="(form.get('name')?.invalid)
               ? 'border-red-500 focus:ring-red-600'
-              : 'border-gray-300 dark:border-neutral-700 focus:ring-emerald-600 dark:focus:ring-lime-400'"
-          />
+              : 'border-gray-300 dark:border-neutral-700 focus:ring-emerald-600 dark:focus:ring-lime-400'"/>
           <div class="mt-1 h-5 text-sm">
-            @if (form.get('name')?.errors && (form.get('name')?.dirty || form.get('name')?.touched)) {
-              <span class="text-red-600">
-                @if (form.get('name')?.errors?.['required']) { Informe seu nome. }
-              </span>
+            @if (form.get('name')?.errors?.['required']) {
+              <p class="mt-1 text-sm text-red-600">Informe seu nome.</p>
             }
           </div>
         </div>
 
         <div>
-          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">E-mail</label>
+          <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">email</label>
           <input
             type="email"
+            name="email"
+            maxlength="50"
             formControlName="email"
             placeholder="produtor@fazenda.com"
             class="w-full rounded-xl border bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 px-4 py-2.5
               focus:outline-none focus:ring-2"
-            [ngClass]="(form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched))
+            [ngClass]="(form.get('email')?.invalid)
               ? 'border-red-500 focus:ring-red-600'
               : 'border-gray-300 dark:border-neutral-700 focus:ring-emerald-600 dark:focus:ring-lime-400'"
           />
           <div class="mt-1 h-5 text-sm">
-            @if (form.get('email')?.errors && (form.get('email')?.dirty || form.get('email')?.touched)) {
-              <span class="text-red-600">
-                @if (form.get('email')?.errors?.['required']) { Informe seu e-mail. }
-                @else if (form.get('email')?.errors?.['email']) { E-mail inválido. }
-              </span>
+            @if (form.get('email')?.errors?.['required']) {
+              <p class="mt-1 text-sm text-red-600">Informe seu email.</p>
+            }
+            @else if (form.get('email')?.errors?.['email']) {
+              <p class="mt-1 text-sm text-red-600">Email inválido.</p>
             }
           </div>
         </div>
@@ -76,20 +77,18 @@
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Senha</label>
           <input
             type="password"
+            name="password"
             formControlName="password"
             placeholder="••••••••"
             class="w-full rounded-xl border bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 placeholder-gray-400 px-4 py-2.5
              focus:outline-none focus:ring-2"
-            [ngClass]="(form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched))
+            [ngClass]="(form.get('password')?.invalid)
               ? 'border-red-500 focus:ring-red-600'
               : 'border-gray-300 dark:border-neutral-700 focus:ring-emerald-600 dark:focus:ring-lime-400'"
           />
           <div class="mt-1 h-5 text-sm">
-            @if (form.get('password')?.errors && (form.get('password')?.dirty || form.get('password')?.touched)) {
-              <span class="text-red-600">
-                @if (form.get('password')?.errors?.['required']) { Informe a senha. }
-                @else if (form.get('password')?.errors?.['minlength']) { Mínimo de 6 caracteres. }
-              </span>
+            @if (form.get('password')?.errors?.['required']) {
+              <p class="mt-1 text-sm text-red-600">Informe a senha.</p>
             }
           </div>
         </div>

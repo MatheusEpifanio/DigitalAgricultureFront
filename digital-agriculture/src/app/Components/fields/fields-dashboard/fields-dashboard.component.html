@@ -1,0 +1,90 @@
+<div class="min-h-screen bg-gradient-to-br from-emerald-50 via-lime-50 to-amber-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 flex items-center justify-center p-6 relative overflow-hidden">
+
+  <div class="pointer-events-none absolute -left-56 -top-40 w-[38rem] h-[38rem] rounded-full bg-emerald-900/30 blur-3xl"></div>
+  <div class="pointer-events-none absolute -right-56 bottom-[-8rem] w-[46rem] h-[46rem] rounded-full bg-emerald-900/20 blur-3xl"></div>
+
+  <div class="relative w-full min-w-10x1  h-[94vh]">
+
+    <div class="rounded-2xl shadow-xl border border-white/10 bg-white/95 dark:bg-slate-900/80 backdrop-blur-xl h-full">
+
+      <div class="flex items-center justify-between p-4 sm:p-6">
+        <div class="flex items-center gap-3">
+          <span class="material-icons text-emerald-600 dark:text-emerald-400">agriculture</span>
+          <h2 class="text-xl sm:text-2xl font-semibold text-slate-800 dark:text-slate-100">Talhões</h2>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            (click)="refresh()"
+            class="inline-flex items-center gap-2 rounded-xl bg-emerald-700 text-white px-4 py-2.5 font-medium shadow hover:bg-emerald-800 transition">
+            <span class="material-icons text-base">refresh</span>
+            Atualizar
+          </button>
+
+          <button
+            type="button"
+            (click)="newField()"
+            class="inline-flex items-center gap-2 rounded-xl bg-emerald-700 text-white px-4 py-2.5 font-medium shadow hover:bg-emerald-800 transition">
+            <span class="material-icons text-base">add</span>
+            Novo
+          </button>
+        </div>
+      </div>
+
+      <div class="border-t border-white/10"></div>
+
+      <div class="p-4 sm:p-6">
+        @if (fields$ | async; as fields) {
+          @if (fields.elements.length) {
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              @for (field of fields.elements; track $index) {
+                <div class="rounded-2xl p-4 border border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-800/90 text-slate-800 dark:text-slate-100 hover:shadow-md transition-shadow">
+                  <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-semibold">
+                      {{ field.name }}
+                    </h3>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100  text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-200">
+                      #{{ field.id }}
+                    </span>
+                  </div>
+                  <div class="mt-4 flex justify-end">
+                    <button
+                      type="button"
+                      class="inline-flex items-center gap-2 rounded-xl border border-slate-300 dark:border-slate-700 px-4 py-2 text-emerald-700 dark:text-emerald-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition">
+                      <span class="material-icons text-base">open_in_new</span>
+                      Detalhes
+                    </button>
+                  </div>
+                </div>
+              }
+            </div>
+            <div class="md:col-span-2 mt-2">
+              <mat-paginator
+                [length]="fields.totalElements"
+                [pageIndex]="numberPage"
+                [pageSize]="lengthPage"
+                [pageSizeOptions]="[5, 10]"
+                (page)="onPage($event)"
+                class="rounded-xl border border-slate-200 dark:border-slate-700
+                      bg-white/90 dark:bg-slate-800/90
+                      text-slate-800 dark:text-slate-100
+                      backdrop-blur-xl overflow-hidden">
+              </mat-paginator>
+            </div>
+          }
+          @else {
+            <div class="rounded-xl border border-dashed border-slate-300 dark:border-slate-700 p-6 text-center">
+              <span class="material-icons text-3xl mb-2 text-slate-400">info</span>
+              <p class="text-slate-600 dark:text-slate-300">Nenhum talhão encontrado.</p>
+            </div>
+          }
+        }
+        @else {
+          <div class="text-sm text-slate-600 dark:text-slate-300">Carregando...</div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,176 @@
+<div class="min-h-screen bg-gradient-to-br from-emerald-50 via-lime-50 to-amber-50
+            dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 flex items-center
+            justify-center p-6 relative overflow-hidden">
+
+  <div class="pointer-events-none absolute -left-56 -top-40 w-[38rem] h-[38rem]
+              rounded-full bg-emerald-900/30 blur-3xl"></div>
+  <div class="pointer-events-none absolute -right-56 bottom-[-8rem] w-[46rem] h-[46rem]
+              rounded-full bg-emerald-900/20 blur-3xl"></div>
+
+  <div class="relative w-full max-w-4xl rounded-2xl bg-white/70 dark:bg-slate-900/60
+              backdrop-blur-xl ring-1 ring-white/10 shadow-2xl p-6 md:p-8">
+
+    <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center gap-3">
+        <span class="material-icons text-emerald-600 dark:text-emerald-400">agriculture</span>
+        <h2 class="text-xl md:text-2xl font-semibold text-slate-800 dark:text-slate-100">
+          Cadastrar Talhão
+        </h2>
+      </div>
+      <span class="text-xs md:text-sm text-slate-500 dark:text-slate-400">* campos obrigatórios</span>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="clickSave()" class="space-y-6">
+      <div class="grid gap-4 md:grid-cols-2">
+
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+            Nome do talhão *
+          </label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Ex.: Campo norte"
+            formControlName="name"
+            required
+            maxlength="50"
+            class="w-full rounded-xl border px-4 py-2.5 bg-white dark:bg-slate-800
+                   text-slate-900 dark:text-slate-100 placeholder-slate-400
+                   focus:outline-none focus:ring-2 focus:ring-emerald-600
+                   dark:focus:ring-lime-400"
+            [ngClass]="(form.get('name')?.invalid)
+              ? 'border-red-500 focus:ring-red-600'
+              : 'border-gray-300 dark:border-neutral-700 focus:ring-emerald-600 dark:focus:ring-lime-400'"/>
+          @if (form.get('name')?.hasError('required')) {
+            <p class="mt-1 text-sm text-red-600">Informe o nome.</p>
+          }
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+            Cultura *
+          </label>
+          <input
+            type="text"
+            name="crop"
+            placeholder="Ex.: Soja"
+            formControlName="crop"
+            required
+            maxlength="30"
+            class="w-full rounded-xl border px-4 py-2.5 bg-white dark:bg-slate-800
+                   text-slate-900 dark:text-slate-100 placeholder-slate-400
+                   focus:outline-none focus:ring-2 focus:ring-emerald-600
+                   dark:focus:ring-lime-400"
+            [ngClass]="(form.get('crop')?.invalid)
+              ? 'border-red-500 focus:ring-red-600'
+              : 'border-gray-300 dark:border-neutral-700 focus:ring-emerald-600 dark:focus:ring-lime-400'"/>
+          @if (form.get('crop')?.hasError('required')) {
+            <p class="mt-1 text-sm text-red-600">Informe a cultura.</p>
+          }
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+            Área (hectares) *
+          </label>
+          <div class="relative">
+            <input
+              type="number"
+              name="areaHectares"
+              placeholder="Ex.: 1"
+              formControlName="areaHectares"
+              min="1"
+              required
+              class="w-full rounded-xl border px-4 py-2.5 pr-10 bg-white dark:bg-slate-800
+                     text-slate-900 dark:text-slate-100 placeholder-slate-400
+                     focus:outline-none focus:ring-2 focus:ring-emerald-600
+                     dark:focus:ring-lime-400"
+              [ngClass]="(form.get('areaHectares')?.invalid )
+              ? 'border-red-500 focus:ring-red-600'
+              : 'border-gray-300 dark:border-neutral-700 focus:ring-emerald-600 dark:focus:ring-lime-400'"/>
+          </div>
+          @if (form.get('areaHectares')?.hasError('required')) {
+            <p class="mt-1 text-sm text-red-600">Informe a área.</p>
+          }
+          @else if (form.get('areaHectares')?.hasError('min')) {
+            <p class="mt-1 text-sm text-red-600">Valor deve ser maior que 0.</p>
+          }
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+            Latitude *
+          </label>
+          <input
+            type="number"
+            name="latitude"
+            placeholder="Ex.: -22.734105 (entre -90 e 90)"
+            formControlName="latitude"
+            step="0.000001"
+            max="90"
+            required
+            class="w-full rounded-xl border px-4 py-2.5 bg-white dark:bg-slate-800
+                   text-slate-900 dark:text-slate-100 placeholder-slate-400
+                   focus:outline-none focus:ring-2 focus:ring-emerald-600
+                   dark:focus:ring-lime-400"
+            [ngClass]="(form.get('latitude')?.invalid)
+              ? 'border-red-500 focus:ring-red-600'
+              : 'border-gray-300 dark:border-neutral-700 focus:ring-emerald-600 dark:focus:ring-lime-400'"/>
+          @if (form.get('latitude')?.hasError('required')) {
+            <p class="mt-1 text-sm text-red-600">Informe a latitude.</p>
+          }
+          @else if (form.get('latitude')?.hasError('min') || form.get('latitude')?.hasError('max')) {
+            <p class="mt-1 text-sm text-red-600">Latitude deve estar entre -90 e 90.</p>
+          }
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-700 dark:text-slate-200 mb-1">
+            Longitude *
+          </label>
+          <input
+            type="number"
+            name="longitude"
+            placeholder="Ex.: -47.317448 (entre -180 e 180)"
+            formControlName="longitude"
+            step="0.000001"
+            max="180"
+            required
+            class="w-full rounded-xl border px-4 py-2.5 bg-white dark:bg-slate-800
+                   text-slate-900 dark:text-slate-100 placeholder-slate-400
+                   focus:outline-none focus:ring-2 focus:ring-emerald-600
+                   dark:focus:ring-lime-400"
+            [ngClass]="(form.get('longitude')?.invalid)
+              ? 'border-red-500 focus:ring-red-600'
+              : 'border-gray-300 dark:border-neutral-700 focus:ring-emerald-600 dark:focus:ring-lime-400'"/>
+          @if (form.get('longitude')?.hasError('required')) {
+            <p class="mt-1 text-sm text-red-600">Informe a longitude.</p>
+          }
+          @else if (form.get('longitude')?.hasError('min') || form.get('longitude')?.hasError('max')) {
+            <p class="mt-1 text-sm text-red-600">Longitude deve estar entre -180 e 180.</p>
+          }
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end gap-3">
+        <button
+          type="button"
+          routerLink="/dashboard"
+          class="px-4 py-2 rounded-lg border border-slate-300 dark:border-slate-700
+                 text-slate-700 dark:text-slate-300 bg-transparent hover:bg-slate-100
+                 dark:hover:bg-slate-800 transition">
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          [disabled]="form.invalid || form.pending || form.pristine"
+          class="px-6 py-2.5 rounded-lg bg-emerald-700 text-white font-medium
+                 shadow hover:bg-emerald-800 transition disabled:opacity-60
+                 disabled:cursor-not-allowed">
+          Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

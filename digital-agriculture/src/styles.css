@@ -1,5 +1,74 @@
-/* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-mdc-paginator,
+.mat-mdc-paginator .mat-mdc-paginator-container {
+  background-color: rgba(15, 23, 42, 0.8) !important;
+
+  color: #e5e7eb !important;
+
+  border: 1px solid rgba(148, 163, 184, 0.4) !important;
+
+  border-radius: 0.75rem !important;
+}
+
+.mat-mdc-paginator .mat-mdc-paginator-range-label,
+.mat-mdc-paginator .mat-mdc-paginator-page-size-label,
+.mat-mdc-paginator .mat-mdc-select-value {
+  color: #e5e7eb !important;
+  font-size: 0.875rem;
+}
+
+.mat-mdc-paginator .mat-mdc-icon-button {
+  border: 1px solid rgba(100, 116, 139, 0.5) !important;
+
+  border-radius: 0.5rem !important;
+
+  width: 2.25rem !important;
+  height: 2.25rem !important;
+  color: #e2e8f0 !important;
+  background: transparent !important;
+}
+
+.mat-mdc-paginator .mat-mdc-icon-button:hover {
+  background: rgba(148, 163, 184, 0.1) !important;
+}
+
+.mat-mdc-paginator .mat-mdc-form-field {
+  --mdc-filled-text-field-container-color: transparent;
+  --mdc-filled-text-field-focus-active-indicator-color: rgba(255, 255, 255, 0.4);
+  --mdc-filled-text-field-hover-active-indicator-color: rgba(148, 163, 184, 0.6);
+  --mdc-filled-text-field-input-text-color: #e5e7eb;
+}
+
+.mat-mdc-paginator .mat-mdc-form-field-flex,
+.mat-mdc-paginator .mat-mdc-form-field-infix {
+  background: transparent !important;
+  color: #e5e7eb !important;
+}
+
+.mat-mdc-paginator {
+  --mdc-icon-button-icon-color: #e5e7eb;
+  --mdc-icon-button-disabled-icon-color: #94a3b8;
+}
+
+.mat-mdc-paginator .mat-mdc-icon-button {
+  color: #e5e7eb !important;
+}
+
+.mat-mdc-paginator .mat-mdc-icon-button.mat-mdc-button-disabled,
+.mat-mdc-paginator .mat-mdc-icon-button.mat-mdc-button-disabled-interactive {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+
+}
+
+.mat-mdc-paginator .mat-mdc-paginator-icon {
+  fill: currentColor !important;
+}
+
+.mat-mdc-paginator .mat-mdc-select-arrow {
+  color: #e5e7eb !important;
+}
