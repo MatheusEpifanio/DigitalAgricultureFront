@@ -9,11 +9,11 @@ export const routes: Routes = [
   },
   {
     path: '',
-    loadChildren: () => import('./components/auth/auth.routes').then(route => route.AUTHROUTES)
+    loadChildren: () => import('./Components/auth/auth.routes').then(route => route.AUTHROUTES)
   },
   {
     path:'dashboard',
-    loadChildren: () => import('./components/fields/fields.route').then(route => route.FIELDSROUTES),
+    loadChildren: () => import('./Components/fields/fields.route').then(route => route.FIELDSROUTES),
     canActivate: [authGuard]
   }
 ];
