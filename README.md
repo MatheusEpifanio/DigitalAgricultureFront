@@ -23,10 +23,12 @@ git clone https://github.com/MatheusEpifanio/DigitalAgricultureFront.git
 cd digital-agriculture
 
 ### 2.1. execute os seguintes comandos
-irá subir um container com aplicação
+```irá subir um container com aplicação
 docker compose -f 'docker-file-compose.yml' up -d --build
+```
 
-caso necessário rode para derrubnar o container no docker
-docker compose -f 'docker-file-compose.yml' down 
+```caso necessário rode para derrubnar o container no docker
+docker compose -f 'docker-file-compose.yml' down
+```
 
 Sistema estará rodando em `http://localhost:80`.
